@@ -1,12 +1,10 @@
 package main
 
 import (
-	// "bufio"
 	"bufio"
 	"fmt"
 	"log"
 	"strconv"
-	// "io"
 	"os"
 )
 
