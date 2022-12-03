@@ -9,7 +9,7 @@ import (
 	"sort"
 )
 
-func check(e error) {
+func Check(e error) {
 	if e != nil {
 		log.Fatal(e)
 	}
@@ -17,7 +17,7 @@ func check(e error) {
 
 func main() {
 	input, err := os.Open("./input/A_input.txt")
-	check(err)
+	Check(err)
 	defer input.Close()
 
 	elves := []int{}
