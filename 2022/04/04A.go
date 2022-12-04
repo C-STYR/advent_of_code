@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strconv"
-	"strings"
 )
 
 func main() {
@@ -23,31 +21,13 @@ func main() {
 	output := 0
 
 	for sc.Scan() {
-		pair := strings.Split(sc.Text(), ",")
+		var a1, a2, z1, z2 int
+		fmt.Sscanf(sc.Text(), "%d-%d,%d-%d", &a1, &z1, &a2, &z2)
 
-		if converter(pair) {
+		if a2 <= a1 && z2 >= z1 || a1 <= a2 && z1 >= z2 {
 			output += 1
 		}
 	}
 
 	fmt.Println(output)
-}
-
-func converter(slc []string) bool {
-	a := strings.Split(slc[0], "-")
-	b := strings.Split(slc[1], "-")
-
-	x1, _ := strconv.Atoi(a[0])
-	x2, _ := strconv.Atoi(b[0])
-	y1, _ := strconv.Atoi(a[1])
-	y2, _ := strconv.Atoi(b[1])
-
-	// compare in both directions
-	if x2 <= x1 && y2 >= y1 {
-		return true
-	}
-	if x1 <= x2 && y1 >= y2 {
-		return true
-	}
-	return false
 }
