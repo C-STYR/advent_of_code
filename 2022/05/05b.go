@@ -52,13 +52,10 @@ func main() {
 	var n, origin, destination int
 
 	for sc.Scan() {
-		_, err := fmt.Sscanf(sc.Text(), "move %d from %d to %d", &n, &origin, &destination)
-		if err != nil {
-			fmt.Println("sscanf err:", err)
-		}
+		fmt.Sscanf(sc.Text(), "move %d from %d to %d", &n, &origin, &destination)
 
 		tempStack := Stack{}
-		
+
 		for i := n; i > 0; i-- {
 			tempStack.push(stackMap[origin].pop())
 		}

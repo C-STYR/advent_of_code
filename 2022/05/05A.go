@@ -52,10 +52,8 @@ func main() {
 	var n, origin, destination int
 
 	for sc.Scan() {
-		_, err := fmt.Sscanf(sc.Text(), "move %d from %d to %d", &n, &origin, &destination)
-		if err != nil {
-			fmt.Println("sscanf err:", err)
-		}
+		fmt.Sscanf(sc.Text(), "move %d from %d to %d", &n, &origin, &destination)
+		
 		for i := n; i > 0; i-- {
 			stackMap[destination].push(stackMap[origin].pop())
 		}
