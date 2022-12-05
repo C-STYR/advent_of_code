@@ -52,18 +52,22 @@ func main() {
 	var n, origin, destination int
 
 	for sc.Scan() {
-		// fmt.Println(sc.Text())
 		_, err := fmt.Sscanf(sc.Text(), "move %d from %d to %d", &n, &origin, &destination)
 		if err != nil {
 			fmt.Println("sscanf err:", err)
 		}
-		// fmt.Println(n, origin, destination)
 		for i := n; i > 0; i-- {
 			stackMap[destination].push(stackMap[origin].pop())
 		}
 	}
 
-	// fmt.Println(stack1, stack2, stack3)
+	fmt.Println("output", getOutput([]Stack{stack1, stack2, stack3, stack4, stack5, stack6, stack7, stack8, stack9,}))
+}
 
-	fmt.Println(stack1[len(stack1) -1], stack2[len(stack2) -1], stack3[len(stack3) -1], stack4[len(stack4) -1], stack5[len(stack5) -1], stack6[len(stack6) -1], stack7[len(stack7) -1], stack8[len(stack8) -1], stack9[len(stack9) -1])
+func getOutput(s []Stack) string {
+	var output string
+	for i := range s {
+		output += s[i][len(s[i]) -1]
+	}
+	return output
 }
