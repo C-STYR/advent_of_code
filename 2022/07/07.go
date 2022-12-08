@@ -19,11 +19,10 @@ type Dir struct {
 	parent    idn
 	children  map[string]idn
 	fileSize  int
-	totalSize int
 }
 
 var Registry = make(map[idn]Dir)
-var root = Dir{name: "root", id: uuid.New(), parent: uuid.New(), children: map[string]idn{}, fileSize: 0, totalSize: 0}
+var root = Dir{name: "root", id: uuid.New(), parent: uuid.New(), children: map[string]idn{}, fileSize: 0}
 var currentDir idn = root.id
 var total int = 0
 
@@ -79,7 +78,7 @@ func createDir(dir string) Dir {
 	id := uuid.New()
 	parent := currentDir
 
-	newDir := Dir{dir, id, parent, children, 0, 0}
+	newDir := Dir{dir, id, parent, children, 0}
 
 	Registry[id] = newDir
 	return newDir
